@@ -55,11 +55,11 @@ class TaskController extends Controller
             'name' => 'required|max:255',
         ]);
     
-        // // タスク作成
-        // Task::create([
-        //     'user_id' => 0,
-        //     'name' => $request->name
-        // ]);
+     // タスク作成
+     Task::create([
+         'user_id' => 0,
+         'name' => $request->name
+     ]);
         $request->user()->tasks()->create([
             'name' => $request->name,
         ]);
