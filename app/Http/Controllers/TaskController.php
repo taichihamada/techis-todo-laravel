@@ -56,10 +56,10 @@ class TaskController extends Controller
         ]);
     
      // タスク作成
-     Task::create([
-         'user_id' => 0,
-         'name' => $request->name
-     ]);
+     //Task::create([
+     //    'user_id' => 0,
+     //    'name' => $request->name
+     //]);
         $request->user()->tasks()->create([
             'name' => $request->name,
         ]);
@@ -76,8 +76,8 @@ class TaskController extends Controller
     */
     public function destroy(Request $request, Task $task)
     {
+        $this->authorize('destroy', $task);
         $task->delete();
-        
         return redirect('/tasks');
     }
 }
